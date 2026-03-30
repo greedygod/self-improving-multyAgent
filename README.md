@@ -1,7 +1,7 @@
 # self-improving-multyAgent
-基于https://clawhub.ai/ivangdavila/self-improving  1.2.16修订
+基于 clawhub.ai/ivangdavila/self-improving v1.2.16修订
 
-# Self-Improving 技能版本对比
+# Self-Improving 功能对比
 
 ## 版本信息
 
@@ -11,7 +11,6 @@
 | 多 agent 支持 | ❌ 差，所有 agent 共用同一路径 | ✅ 好，每个 agent 独立路径 |
 | 初始化方式 | 手动创建目录 | 首次触发时自动检测并初始化 |
 | 配置灵活性 | 差 | 好，可自定义 dataPath |
-| Clawhub 状态 | ✅ 正式版 | ⚠️ test 版（未发布）|
 
 ---
 
