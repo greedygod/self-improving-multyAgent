@@ -5,8 +5,8 @@
 
 ## 版本信息
 
-| 项目 | 原版（Clawhub）| 版（1.2.16-tztest）|
-|------|----------------------|---------------------|
+| 项目 | Clawhub原版（1.2.16）| 修改版（1.2.16-tztest）|
+|------|----------------------|---------------------|SD S
 | 数据路径 | 硬编码 `~/self-improving/` | 通过 `.self-improving.json` 配置 |
 | 多 agent 支持 | ❌ 差，所有 agent 共用同一路径 | ✅ 好，每个 agent 独立路径 |
 | 初始化方式 | 手动创建目录 | 首次触发时自动检测并初始化 |
@@ -44,23 +44,36 @@
 
 **新版方案：**
 每个 agent 初始化时向各自的 `.self-improving.json` 写入自己的路径，天然隔离，互不干扰。
+
 ```
 /root/.openclaw/
 ├── workspace/                    ← main agent（Agent A）
 │   ├── self-improving/          ← A的记忆数据
-│   │   ├── .self-improving.json
+│   │   ├── .self-improving.json  ← A的记忆数据配置 dataPath: /root/.openclaw/workspace/self-improving 
 │   │   ├── memory.md
 │   │   ├── corrections.md
 │   │   └── ...
 │   └── skills/
 │
-└── workspace-tztest/    ← （Agent B）
-    ├── self-improving/          ← B的记忆数据
-    │   ├── .self-improving.json  ← dataPath: /root/.openclaw/workspace-tztest/self-improving  #可配置的记忆保存路径，不局限在workspace内部
-    │   ├── memory.md
-    │   ├── corrections.md
-    │   └── ...
-    └── skills/
+├── workspace-b/    ← （Agent B）
+│    ├── self-improving/           ← B的记忆数据   
+│    │   ├── .self-improving.json  ← B的记忆数据配置 dataPath: /root/.openclaw/workspace-b/self-improving 
+│    │   ├── memory.md
+│    │   ├── corrections.md
+│    │   └── ...
+│    └── skills/
+├── workspace-c/    ← （Agent C）
+│   ├── self-improving/      
+│   │   └── .self-improving.json    ← C的记忆数据配置 自定义dataPath: /root/.openclaw/anyplace-c/self-improving ，不局限在工作区
+│   ├── skills/
+│   └── ...
+│ 
+├── anyplace-c/
+    └── self-improving/  ← C的记忆数据
+        ├── memory.md
+        ├── corrections.md
+        └── ...
+
 ```
 
 
