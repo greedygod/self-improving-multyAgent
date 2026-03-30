@@ -23,11 +23,7 @@
 
 **新版：** 引入 `{baseDir}/../self-improving/.self-improving.json`
 ```json
-{
-"dataPath": "自定义存储路径",
-"version": "1.0",
-"initializedAt": "2026-03-30T09:48:00+08:00"
-}
+{"dataPath": "记忆数据存储路径"}
 ```
 
 ## 原版问题，记忆介质指向~/self-improving/，仅实现用户隔离：
